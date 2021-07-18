@@ -2,8 +2,7 @@
 Simple Botnet C&amp;C Server with Multiple Attack Methods, Built in Python.
 
 # Server Usage 🕷
-Just login with the logins.txt / admins.txt credentials you have.
-
+Just login with the logins.txt / admins.txt credentials you have. 
 From here just use the 'help' command in the terminal, and all the other commands are listed with descriptions.
 
 # Harvesting Bots 🕸
