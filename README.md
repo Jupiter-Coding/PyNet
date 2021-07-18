@@ -11,7 +11,7 @@ To harvest bots for your PyNet configuration, change the IP's & Ports inside the
 
 Your availabe bots/slave PC's will act as a group for your attack commands, launching scripts to overflow the addressed IP.
 
-The number of bots you've collected & are online for attacks is shown in the window title.
+The number of bots that are connected for attacks is shown in the terminal title.
 
 # Info ♣
 Coming Soon.
