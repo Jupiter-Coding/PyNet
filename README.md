@@ -1,5 +1,5 @@
 # PyNet 🔪
-Simple Botnet C&amp;C Server with Multiple Attack Methods, Built in Python.
+PyNet is a Simple Botnet C&amp;C Server with Multiple Attack Methods, Built in Python.
 
 # Server Usage 🕷
 Just login with the logins.txt / admins.txt credentials you have. 
