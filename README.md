@@ -13,5 +13,5 @@ Your availabe bots/slave PC's will act as a group for your attack commands, laun
 
 The number of bots that are connected for attacks is shown in the terminal title.
 
-# Info ♣
-Coming Soon.
+# Attack ♣
+![image](https://user-images.githubusercontent.com/75194878/126154815-95b45b3b-8b70-4a0e-87c8-06bf16eb5b32.png)
