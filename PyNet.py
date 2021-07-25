@@ -68,7 +68,6 @@ else:
 	print(f'{Fore.RED}[PYNET] {Fore.RESET}${Fore.RED} INVALID LOGIN.')
 	exit()
 	sys.exit()
-	sleep(99999999999999999999999999999999999999999999999999999999999999999999)
 
 class Server():
 	def __init__(self, connect:Tuple[str,int]=("0.0.0.0",9999)):
